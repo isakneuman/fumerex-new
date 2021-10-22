@@ -23,8 +23,8 @@ def get_new_message(state_machine):
             for m in sms:
                 if ( m["Text"].isdigit() ):
                     print(m["Text"])
-                    #new_sms.append(m["Text"])
-            #return new_sms
+                    new_sms.append(m["Text"])
+            return new_sms
     except gammu.ERR_EMPTY:
             # This error is raised when we've reached last entry
             # It can happen when reported status does not match real counts
