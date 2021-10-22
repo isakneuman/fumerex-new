@@ -11,6 +11,7 @@ def get_new_message(state_machine):
     count_new_sms  =   status["UnRead"]
     start = True
     new_sms   = []
+    sms       = []
     try:
         while count_new_sms > 0:
             if start:
@@ -29,3 +30,6 @@ def get_new_message(state_machine):
             # It can happen when reported status does not match real counts
         print("Failed to read all messages!")
 
+state_machine = init_gsm()
+array = get_new_message(state_machine)
+print(array)
