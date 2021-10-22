@@ -58,9 +58,9 @@ def init_client():
 
 # START
 client1     =   init_client()
-dict_buff = parse_and_create_dict(string_sms2)
+dict_buff   = parse_and_create_dict(string_sms2)
 list_with_data.append(dict_buff)   
 json_buff[dict_buff.get('IMEI')] = list_with_data
-json_send = json.dumps(json_buff,indent=2)
+json_send   = json.dumps(json_buff,indent=2)
 
 client1.publish(topic,json_send)
