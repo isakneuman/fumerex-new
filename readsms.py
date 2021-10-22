@@ -8,10 +8,9 @@ def init_gsm():
 
 def get_new_message(state_machine):
     status         =   state_machine.GetSMSStatus()
-    count_new_sms  =   status["UnRead"]
+    count_new_sms  =   status["PhoneUsed"]
     start = True
     new_sms   = []
-    sms       = []
     try:
         while count_new_sms > 0:
             if start:
@@ -23,8 +22,9 @@ def get_new_message(state_machine):
 
             for m in sms:
                 if ( m["Text"].isdigit() ):
-                    new_sms.append(m["Text"])
-            return new_sms
+                    print(m["Text"])
+                    #new_sms.append(m["Text"])
+            #return new_sms
     except gammu.ERR_EMPTY:
             # This error is raised when we've reached last entry
             # It can happen when reported status does not match real counts
