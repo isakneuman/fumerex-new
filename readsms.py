@@ -7,7 +7,7 @@ def readsms():
 
     status = state_machine.GetSMSStatus()
 
-    remain = status["SIMUsed"] + status["PhoneUsed"] + status["TemplatesUsed"]
+    remain = status["UnRead"]
 
     start = True
     
@@ -23,8 +23,7 @@ def readsms():
             remain = remain - len(sms)
 
             for m in sms:
-                if ( m["Text"].isdigit() and m["State"]=='UnRead' ):
-                    
+                if ( m["Text"].isdigit() ):
                     print("{:<15}: {}".format("Text", m["Text"]))
     except gammu.ERR_EMPTY:
         # This error is raised when we've reached last entry
